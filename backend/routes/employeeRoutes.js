@@ -7,14 +7,16 @@ const {
   deleteEmployee,
 } = require('../controllers/employeeController');
 
+const { protect } = require('../middleware/authMiddleware');
+
 const router = express.Router();
 
-router.post('/', addEmployee);
+router.post('/', protect, addEmployee);
 
-router.get('/', getEmployees);
+router.get('/', protect, getEmployees);
 
-router.get('/search', searchEmployee);
+router.get('/search', protect, searchEmployee);
 
-router.delete('/:id', deleteEmployee);
+router.delete('/:id', protect, deleteEmployee);
 
 module.exports = router;

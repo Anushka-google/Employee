@@ -1,31 +1,36 @@
-require('dotenv').config();
+const express = require("express");
+const cors = require("cors");
+const dotenv = require("dotenv");
 
-const express = require('express');
-const cors = require('cors');
+const connectDB = require("./config/db");
 
-const connectDB = require('./config/db');
-
-const employeeRoutes = require('./routes/employeeRoutes');
-const authRoutes = require('./routes/authRoutes');
-const aiRoutes = require('./routes/aiRoutes');
+dotenv.config();
 
 const app = express();
 
 connectDB();
 
 app.use(cors());
+
 app.use(express.json());
 
-app.use('/api/employees', employeeRoutes);
-app.use('/api/auth', authRoutes);
-app.use('/api/ai', aiRoutes);
+const authRoutes = require("./routes/authRoutes");
+const employeeRoutes = require("./routes/employeeRoutes");
+const aiRoutes = require("./routes/aiRoutes");
 
-app.get('/', (req, res) => {
-  res.send('API Running...');
+app.use("/api/auth", authRoutes);
+app.use("/api/employees", employeeRoutes);
+app.use("/api/ai", aiRoutes);
+
+app.get("/",(req,res)=>{
+  res.send("Backend Running");
 });
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+app.listen(PORT,()=>{
+
+  console.log(
+    `Server Running On Port ${PORT}`
+  );
 });

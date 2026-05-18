@@ -1,7 +1,9 @@
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate, Link } from "react-router-dom";
 
 function Login() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -37,6 +39,9 @@ function Login() {
       setMessage("Login Successful");
 
       console.log(response.data);
+      setTimeout(() => {
+        navigate("/dashboard");
+      }, 500);
     } catch (error) {
       setMessage(
         error.response?.data?.message ||
@@ -109,12 +114,12 @@ function Login() {
             Don't have an account?
           </p>
 
-          <a
-            href="/signup"
+          <Link
+            to="/signup"
             style={linkStyle}
           >
             Register Here
-          </a>
+          </Link>
         </div>
       </div>
     </div>
