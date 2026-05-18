@@ -26,7 +26,7 @@ function EmployeeForm() {
         performanceScore: Number(formData.performanceScore),
         experience: Number(formData.experience),
       };
-      await axios.post("http://localhost:5000/api/employees", payload, {
+      await axios.post("https://employee-stp5.onrender.com/api/employees", payload, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setMessage("Employee Added Successfully!");

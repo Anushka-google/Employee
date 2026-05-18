@@ -23,7 +23,7 @@ function Signup() {
     e.preventDefault();
     try {
       setLoading(true);
-      const response = await axios.post("http://localhost:5000/api/auth/signup", formData);
+      const response = await axios.post("https://employee-stp5.onrender.com/api/auth/signup", formData);
       setMessage("Signup Successful! You can now login.");
       setTimeout(() => {
         navigate("/login");

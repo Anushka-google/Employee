@@ -8,7 +8,7 @@ function EmployeeList() {
   const fetchEmployees = async (dept = "") => {
     try {
       const token = localStorage.getItem("token");
-      const url = dept ? `http://localhost:5000/api/employees/search?department=${dept}` : "http://localhost:5000/api/employees";
+      const url = dept ? `https://employee-stp5.onrender.com/api/employees/search?department=${dept}` : "https://employee-stp5.onrender.com/api/employees";
       const { data } = await axios.get(url, {
         headers: { Authorization: `Bearer ${token}` }
       });

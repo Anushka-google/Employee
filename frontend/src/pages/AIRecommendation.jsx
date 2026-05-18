@@ -11,7 +11,7 @@ function AIRecommendation() {
     const fetchEmployees = async () => {
       try {
         const token = localStorage.getItem("token");
-        const { data } = await axios.get("http://localhost:5000/api/employees", {
+        const { data } = await axios.get("https://employee-stp5.onrender.com/api/employees", {
           headers: { Authorization: `Bearer ${token}` }
         });
         setEmployees(data);
@@ -31,7 +31,7 @@ function AIRecommendation() {
     setRecommendation("");
     try {
       const token = localStorage.getItem("token");
-      const { data } = await axios.post("http://localhost:5000/api/ai/recommend", {
+      const { data } = await axios.post("https://employee-stp5.onrender.com/api/ai/recommend", {
         name: emp.name,
         skills: emp.skills,
         performanceScore: emp.performanceScore,
